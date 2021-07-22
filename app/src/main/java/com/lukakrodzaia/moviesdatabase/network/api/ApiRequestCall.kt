@@ -1,8 +1,11 @@
-package com.lukakrodzaia.moviesdatabase.network
+package com.lukakrodzaia.moviesdatabase.network.api
 
+import com.lukakrodzaia.moviesdatabase.network.EndPoints
+import com.lukakrodzaia.moviesdatabase.network.InternetConnection
+import com.lukakrodzaia.moviesdatabase.network.Result
 import retrofit2.Response
 
-open class ApiCall {
+abstract class ApiRequestCall {
     suspend fun <T: Any> apiCall(call: suspend () -> Response<T>): Result<T> {
         return try {
             val response = call.invoke()

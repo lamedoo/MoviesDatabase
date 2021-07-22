@@ -1,5 +1,6 @@
-package com.lukakrodzaia.moviesdatabase.network
+package com.lukakrodzaia.moviesdatabase.network.api
 
+import com.lukakrodzaia.moviesdatabase.network.EndPoints
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetPopularTvShowsResponse
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetSimilarTvShowsResponse
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetTitleDetailsResponse
@@ -15,9 +16,11 @@ interface ApiNetwork {
 
     @GET(EndPoints.GET_TITLE_DETAILS)
     suspend fun getTitleDetails(@Path("tv_id") tv_id: Int,
-                                @Query("api_key") api_key: String = EndPoints.API_KEY) : Response<GetTitleDetailsResponse>
+                                @Query("api_key") api_key: String = EndPoints.API_KEY
+    ) : Response<GetTitleDetailsResponse>
 
     @GET(EndPoints.GET_SIMILAR_TV_SHOWS)
     suspend fun getSimilarTvShows(@Path("tv_id") tv_id: Int,
-                                  @Query("api_key") api_key: String = EndPoints.API_KEY) : Response<GetSimilarTvShowsResponse>
+                                  @Query("api_key") api_key: String = EndPoints.API_KEY
+    ) : Response<GetSimilarTvShowsResponse>
 }

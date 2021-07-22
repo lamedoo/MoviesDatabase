@@ -1,6 +1,6 @@
 package com.lukakrodzaia.moviesdatabase.di
 
-import com.lukakrodzaia.moviesdatabase.network.ApiNetwork
+import com.lukakrodzaia.moviesdatabase.network.api.ApiNetwork
 import com.lukakrodzaia.moviesdatabase.network.RetrofitBuilder
 import com.lukakrodzaia.moviesdatabase.network.interceptors.NetworkConnectionInterceptor
 import org.koin.dsl.module
