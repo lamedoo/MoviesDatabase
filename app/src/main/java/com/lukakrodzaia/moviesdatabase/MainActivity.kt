@@ -1,11 +1,23 @@
 package com.lukakrodzaia.moviesdatabase
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentTransaction
+import com.lukakrodzaia.moviesdatabase.databinding.ActivityMainBinding
+import com.lukakrodzaia.moviesdatabase.ui.baseclasses.BaseActivity
+import com.lukakrodzaia.moviesdatabase.ui.popular.PopularShowsFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override val navHost: Int
+        get() = R.id.main_nav_host
+
+    override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        supportFragmentManager.beginTransaction()
+            .add(R.id.main_nav_host, PopularShowsFragment())
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            .commit()
     }
 }
