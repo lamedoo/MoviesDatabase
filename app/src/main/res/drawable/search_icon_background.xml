@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/client_status_indicator_dot">
+        <shape android:shape="oval">
+            <solid android:color="@color/_282828"/>
+            <size android:width="16dp"
+                android:height="16dp"/>
+        </shape>
+    </item>
+</layer-list>

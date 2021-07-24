@@ -1,11 +1,13 @@
 package com.lukakrodzaia.moviesdatabase.ui.popular
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lukakrodzaia.moviesdatabase.databinding.RvPopularShowsItemBinding
 import com.lukakrodzaia.moviesdatabase.datamodels.PopularListModel
+import com.lukakrodzaia.moviesdatabase.utils.setImage
 
 class PopularShowsAdapter(private val context: Context,
                           private val onShowClick: (id: Int) -> Unit): RecyclerView.Adapter<PopularShowsAdapter.ViewHolder>() {
@@ -13,6 +15,7 @@ class PopularShowsAdapter(private val context: Context,
 
     fun setItems(shows: List<PopularListModel>) {
         list = shows
+        Log.d("dasdasdsda", shows.toString())
         notifyDataSetChanged()
     }
 
@@ -35,7 +38,8 @@ class PopularShowsAdapter(private val context: Context,
 
     inner class ViewHolder(private val view: RvPopularShowsItemBinding): RecyclerView.ViewHolder(view.root) {
         fun bind(show: PopularListModel) {
-            view.showTitle.text = show.name
+            view.itemName.text = show.name
+            view.itemPoster.setImage(show.poster)
         }
     }
 }

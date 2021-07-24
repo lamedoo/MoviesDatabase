@@ -2,7 +2,7 @@ package com.lukakrodzaia.moviesdatabase.network
 
 object EndPoints {
     const val BASE_URL = "https://api.themoviedb.org/3/"
-    const val IMAGE_BASE_URL = "http://image.tmdb.org/t/p/"
+    const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original"
 
     const val API_KEY = "abfd4643bc864c611510b31d490439f2"
 

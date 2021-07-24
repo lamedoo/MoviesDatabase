@@ -14,7 +14,11 @@ class PopularShowsViewModel: BaseViewModel() {
     private val _popularShowsList = MutableLiveData<List<PopularListModel>>()
     val popularShowsList: LiveData<List<PopularListModel>> = _popularShowsList
 
+    private val _hasMore = MutableLiveData<Boolean>()
+    val hasMore: LiveData<Boolean> = _hasMore
+
     fun fetchPopularShows(page: Int) {
+        loading()
         viewModelScope.launch {
             when (val shows = repository.getPopularTvShows(page)) {
                 is Result.Success -> {
@@ -22,6 +26,17 @@ class PopularShowsViewModel: BaseViewModel() {
 
                     fetchPopularShows.addAll(data.results.toPopularListModel())
                     _popularShowsList.value = fetchPopularShows
+
+                    _hasMore.value = data.page < data.totalPages
+
+                    loaded()
+                }
+                is Result.Error -> {
+                    loaded()
+                }
+                is Result.Internet -> {
+                    loaded()
+                    noInternet()
                 }
             }
         }
