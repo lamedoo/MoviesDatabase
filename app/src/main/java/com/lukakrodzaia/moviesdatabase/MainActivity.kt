@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.lukakrodzaia.moviesdatabase.databinding.ActivityMainBinding
 import com.lukakrodzaia.moviesdatabase.ui.baseclasses.BaseActivity
-import com.lukakrodzaia.moviesdatabase.ui.popular.PopularShowsFragment
+import com.lukakrodzaia.moviesdatabase.ui.popularshows.PopularShowsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override val navHost: Int
@@ -15,9 +15,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.main_nav_host, PopularShowsFragment())
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
+        openNewFragment(PopularShowsFragment(), false)
     }
 }

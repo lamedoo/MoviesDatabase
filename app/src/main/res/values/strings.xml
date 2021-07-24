@@ -2,4 +2,7 @@
     <string name="app_name">Movies Database</string>
     <string name="check_internet_connection">შეამოწმეთ ინტერნეტთან კავშირი</string>
     <string name="try_again">სცადეთ თავიდან</string>
+    <string name="rating">რეიტინგი</string>
+    <string name="date">თარიღი</string>
+    <string name="length">ხანგრძლივობა</string>
 </resources>

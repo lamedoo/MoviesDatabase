@@ -1,4 +1,4 @@
-package com.lukakrodzaia.moviesdatabase.ui.popular
+package com.lukakrodzaia.moviesdatabase.ui.popularshows
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lukakrodzaia.moviesdatabase.R
 import com.lukakrodzaia.moviesdatabase.databinding.FragmentPopularShowsBinding
-import com.lukakrodzaia.moviesdatabase.datamodels.PopularListModel
-import com.lukakrodzaia.moviesdatabase.network.models.response.GetPopularTvShowsResponse
 import com.lukakrodzaia.moviesdatabase.ui.baseclasses.BaseFragment
+import com.lukakrodzaia.moviesdatabase.ui.singletitle.SingleTitleFragment
+import com.lukakrodzaia.moviesdatabase.utils.AppConstants
+import com.lukakrodzaia.moviesdatabase.utils.applyBundle
 import com.lukakrodzaia.moviesdatabase.utils.setVisibleOrGone
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,6 +40,10 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
     }
 
     private fun clickListeners() {
+        binding.searchButton.setOnClickListener {
+
+        }
+
         binding.retryButton.setOnClickListener {
             popularShowsViewModel.fetchPopularShows(page)
         }
@@ -65,7 +69,10 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
 
         layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
         popularShowsAdapter = PopularShowsAdapter(requireContext()) {
-
+            val singleTitleFragment = SingleTitleFragment().applyBundle {
+                putInt(AppConstants.TITLE_ID, it)
+            }
+            openFragmentListener?.openNewFragment(singleTitleFragment, true)
         }
 
         binding.rvPopularShows.layoutManager = layoutManager

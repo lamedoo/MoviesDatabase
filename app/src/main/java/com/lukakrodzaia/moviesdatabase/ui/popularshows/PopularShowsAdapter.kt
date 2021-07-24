@@ -1,7 +1,6 @@
-package com.lukakrodzaia.moviesdatabase.ui.popular
+package com.lukakrodzaia.moviesdatabase.ui.popularshows
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -39,6 +38,10 @@ class PopularShowsAdapter(private val context: Context,
         fun bind(show: PopularListModel) {
             view.itemName.text = show.name
             view.itemPoster.setImage(show.poster)
+
+            view.root.setOnClickListener {
+                onShowClick(show.id)
+            }
         }
     }
 }

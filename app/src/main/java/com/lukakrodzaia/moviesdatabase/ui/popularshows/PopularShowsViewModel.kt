@@ -1,4 +1,4 @@
-package com.lukakrodzaia.moviesdatabase.ui.popular
+package com.lukakrodzaia.moviesdatabase.ui.popularshows
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -18,8 +18,8 @@ class PopularShowsViewModel: BaseViewModel() {
     val hasMore: LiveData<Boolean> = _hasMore
 
     fun fetchPopularShows(page: Int) {
-        loading()
         viewModelScope.launch {
+            loading()
             when (val shows = repository.getPopularTvShows(page)) {
                 is Result.Success -> {
                     val data = shows.data

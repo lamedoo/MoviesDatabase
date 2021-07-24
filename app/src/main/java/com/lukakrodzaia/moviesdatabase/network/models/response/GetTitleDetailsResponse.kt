@@ -28,13 +28,13 @@ data class GetTitleDetailsResponse(
     @SerializedName("last_air_date")
     val lastAirDate: String,
     @SerializedName("last_episode_to_air")
-    val lastEpisodeToAir: LastEpisodeToAir,
+    val lastEpisodeToAir: LastEpisodeToAir?,
     @SerializedName("name")
     val name: String,
     @SerializedName("networks")
     val networks: List<Network>,
     @SerializedName("next_episode_to_air")
-    val nextEpisodeToAir: String?,
+    val nextEpisodeToAir: NextEpisodeToAir?,
     @SerializedName("number_of_episodes")
     val numberOfEpisodes: Int,
     @SerializedName("number_of_seasons")
@@ -109,7 +109,7 @@ data class GetTitleDetailsResponse(
         @SerializedName("season_number")
         val seasonNumber: Int,
         @SerializedName("still_path")
-        val stillPath: String,
+        val stillPath: String?,
         @SerializedName("vote_average")
         val voteAverage: Double,
         @SerializedName("vote_count")
@@ -129,11 +129,35 @@ data class GetTitleDetailsResponse(
     ) : Parcelable
 
     @Parcelize
+    data class NextEpisodeToAir(
+        @SerializedName("air_date")
+        val airDate: String,
+        @SerializedName("episode_number")
+        val episodeNumber: Int,
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("overview")
+        val overview: String,
+        @SerializedName("production_code")
+        val productionCode: String,
+        @SerializedName("season_number")
+        val seasonNumber: Int,
+        @SerializedName("still_path")
+        val stillPath: String?,
+        @SerializedName("vote_average")
+        val voteAverage: Double,
+        @SerializedName("vote_count")
+        val voteCount: Int
+    ) : Parcelable
+
+    @Parcelize
     data class ProductionCompany(
         @SerializedName("id")
         val id: Int,
         @SerializedName("logo_path")
-        val logoPath: String,
+        val logoPath: String?,
         @SerializedName("name")
         val name: String,
         @SerializedName("origin_country")
