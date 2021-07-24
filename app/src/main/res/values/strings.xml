@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movies Database</string>
+    <string name="check_internet_connection">შეამოწმეთ ინტერნეტთან კავშირი</string>
+    <string name="try_again">სცადეთ თავიდან</string>
 </resources>

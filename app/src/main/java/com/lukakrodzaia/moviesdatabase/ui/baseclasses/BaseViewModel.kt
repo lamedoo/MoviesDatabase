@@ -26,6 +26,10 @@ open class BaseViewModel: ViewModel(), KoinComponent {
         _isLoading.value = false
     }
 
+    fun hasInternet() {
+        _isInternet.value = true
+    }
+
     fun noInternet() {
         _isInternet.value = false
     }

@@ -30,9 +30,11 @@ class PopularShowsViewModel: BaseViewModel() {
                     _hasMore.value = data.page < data.totalPages
 
                     loaded()
+                    hasInternet()
                 }
                 is Result.Error -> {
                     loaded()
+                    hasInternet()
                 }
                 is Result.Internet -> {
                     loaded()

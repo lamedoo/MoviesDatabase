@@ -15,7 +15,6 @@ class PopularShowsAdapter(private val context: Context,
 
     fun setItems(shows: List<PopularListModel>) {
         list = shows
-        Log.d("dasdasdsda", shows.toString())
         notifyDataSetChanged()
     }
 

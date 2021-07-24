@@ -36,6 +36,13 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
         setPopularShowsRecycler()
         fragmentObservers()
         infiniteScroll()
+        clickListeners()
+    }
+
+    private fun clickListeners() {
+        binding.retryButton.setOnClickListener {
+            popularShowsViewModel.fetchPopularShows(page)
+        }
     }
 
     private fun fragmentObservers() {
@@ -46,6 +53,10 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
         popularShowsViewModel.isLoading.observe(viewLifecycleOwner, {
             binding.loading.setVisibleOrGone(it)
             loading = it
+        })
+
+        popularShowsViewModel.isInternet.observe(viewLifecycleOwner, {
+            binding.noInternet.setVisibleOrGone(!it)
         })
     }
 
