@@ -8,5 +8,5 @@ import com.lukakrodzaia.moviesdatabase.network.models.response.GetTitleDetailsRe
 interface DefaultTvRepository {
     suspend fun getPopularTvShows(page: Int): Result<GetPopularTvShowsResponse>
     suspend fun getTitleDetails(id: Int): Result<GetTitleDetailsResponse>
-    suspend fun getSimilarTvShows(id: Int): Result<GetSimilarTvShowsResponse>
+    suspend fun getSimilarTvShows(id: Int, page: Int): Result<GetSimilarTvShowsResponse>
 }

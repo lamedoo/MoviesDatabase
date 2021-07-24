@@ -5,4 +5,10 @@
     <string name="rating">რეიტინგი</string>
     <string name="date">თარიღი</string>
     <string name="length">ხანგრძლივობა</string>
+    <string name="details">დეტალები</string>
+    <string name="similar">მსგავსი</string>
+    <string name="overview">შინაარსი</string>
+    <string name="genres">ჟანრები</string>
+    <string name="seasons">სეზონი</string>
+    <string name="episodes">ეპიზოდი</string>
 </resources>

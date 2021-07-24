@@ -16,7 +16,7 @@ class TvRepository(private val apiNetwork: ApiNetwork): ApiRequestCall(), Defaul
         return apiCall { apiNetwork.getTitleDetails(id) }
     }
 
-    override suspend fun getSimilarTvShows(id: Int): Result<GetSimilarTvShowsResponse> {
-        return apiCall { apiNetwork.getSimilarTvShows(id) }
+    override suspend fun getSimilarTvShows(id: Int, page: Int): Result<GetSimilarTvShowsResponse> {
+        return apiCall { apiNetwork.getSimilarTvShows(id, page) }
     }
 }

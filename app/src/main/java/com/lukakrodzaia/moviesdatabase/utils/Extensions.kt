@@ -1,6 +1,7 @@
 package com.lukakrodzaia.moviesdatabase.utils
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
@@ -8,9 +9,11 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.lukakrodzaia.moviesdatabase.R
 import com.lukakrodzaia.moviesdatabase.datamodels.PopularListModel
+import com.lukakrodzaia.moviesdatabase.datamodels.SimilarListModel
 import com.lukakrodzaia.moviesdatabase.datamodels.SingleTitleModel
 import com.lukakrodzaia.moviesdatabase.network.EndPoints
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetPopularTvShowsResponse
+import com.lukakrodzaia.moviesdatabase.network.models.response.GetSimilarTvShowsResponse
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetTitleDetailsResponse
 
 
@@ -44,7 +47,21 @@ fun List<GetPopularTvShowsResponse.Result>.toPopularListModel(): List<PopularLis
     }
 }
 
+fun List<GetSimilarTvShowsResponse.Result>.toSimilarListModel(): List<SimilarListModel> {
+    return map {
+        SimilarListModel(
+            id = it.id,
+            name = it.name,
+            poster = if (it.posterPath != null) "${EndPoints.IMAGE_BASE_URL}${it.posterPath}" else "",
+            score = it.voteAverage
+        )
+    }
+}
+
 fun GetTitleDetailsResponse.toSingleTitleModel(): SingleTitleModel {
+    val genres = ArrayList<String>()
+    this.genres.forEach { genres.add(it.name) }
+
     return SingleTitleModel(
         id = id,
         name = name,
@@ -53,7 +70,10 @@ fun GetTitleDetailsResponse.toSingleTitleModel(): SingleTitleModel {
         overview = overview,
         rating = voteAverage.toString(),
         date = firstAirDate,
-        length = "${episodeRunTime[0]} წთ."
+        length = "${episodeRunTime[0]} წთ.",
+        genres = TextUtils.join(", ", genres),
+        seasons = numberOfSeasons.toString(),
+        episodes = numberOfEpisodes.toString()
     )
 }
 

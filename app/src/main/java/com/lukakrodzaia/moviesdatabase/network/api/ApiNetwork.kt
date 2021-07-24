@@ -21,6 +21,7 @@ interface ApiNetwork {
 
     @GET(EndPoints.GET_SIMILAR_TV_SHOWS)
     suspend fun getSimilarTvShows(@Path("tv_id") tv_id: Int,
+                                  @Query("page") page: Int,
                                   @Query("api_key") api_key: String = EndPoints.API_KEY
     ) : Response<GetSimilarTvShowsResponse>
 }

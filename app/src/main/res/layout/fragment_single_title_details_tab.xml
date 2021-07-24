@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/_1d1d1d">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="@string/overview"
+        android:textColor="@color/_8b8b8b"/>
+
+    <TextView
+        android:id="@+id/title_overview"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        tools:text="აღწერა არ მოიძებნა"
+        android:textColor="@color/_e2e2e2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="@string/genres"
+        android:textColor="@color/_8b8b8b"/>
+
+    <TextView
+        android:id="@+id/title_genres"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        tools:text="დარამა, კომედია"
+        android:textColor="@color/_e2e2e2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:text="@string/length"
+        android:textColor="@color/_8b8b8b"/>
+
+    <TextView
+        android:id="@+id/title_duration"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        tools:text="2 სეზონი, 20 ეპიზოდი"
+        android:textColor="@color/_e2e2e2"/>
+
+</LinearLayout>

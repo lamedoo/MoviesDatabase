@@ -8,5 +8,8 @@ data class SingleTitleModel(
     val overview: String,
     val rating: String,
     val date: String,
-    val length: String
+    val length: String,
+    val genres: String,
+    val seasons: String,
+    val episodes: String
 )
