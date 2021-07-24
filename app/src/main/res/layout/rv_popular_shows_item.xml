@@ -23,6 +23,27 @@
 
     <LinearLayout
         android:layout_width="0dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/item_poster"
+        app:layout_constraintStart_toStartOf="@id/item_poster"
+        app:layout_constraintEnd_toEndOf="@id/item_poster"
+        android:background="@drawable/image_score_background">
+
+        <TextView
+            android:id="@+id/item_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            tools:text="8.2"
+            android:textSize="18sp"
+            android:textColor="@color/_e2e2e2"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
         app:layout_constraintTop_toBottomOf="@id/item_poster"

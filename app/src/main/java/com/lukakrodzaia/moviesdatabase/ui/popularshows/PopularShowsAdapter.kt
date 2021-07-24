@@ -38,6 +38,7 @@ class PopularShowsAdapter(private val context: Context,
         fun bind(show: PopularListModel) {
             view.itemName.text = show.name
             view.itemPoster.setImage(show.poster)
+            view.itemScore.text = show.score.toString()
 
             view.root.setOnClickListener {
                 onShowClick(show.id)
