@@ -13,10 +13,10 @@ open class BaseViewModel: ViewModel(), KoinComponent {
     private val tvRepository: TvRepository = get()
     protected val repository: DefaultTvRepository = tvRepository
 
-    private val _isLoading = MutableLiveData(true)
+    private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    private val _isInternet = MutableLiveData(true)
+    private val _isInternet = MutableLiveData<Boolean>()
     val isInternet: LiveData<Boolean> = _isInternet
 
     fun loading() {

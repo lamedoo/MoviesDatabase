@@ -26,6 +26,7 @@ class SingleTitleViewModel : BaseViewModel() {
 
     fun getSingleTitle(id: Int) {
         viewModelScope.launch {
+            loading()
             when (val title = repository.getTitleDetails(id)) {
                 is Result.Success -> {
                     val data = title.data
@@ -49,6 +50,7 @@ class SingleTitleViewModel : BaseViewModel() {
 
     fun getSimilarTitles(id: Int, page: Int) {
         viewModelScope.launch {
+            loading()
             when (val similar = repository.getSimilarTvShows(id, page)) {
                 is Result.Success -> {
                     val data = similar.data

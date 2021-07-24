@@ -21,7 +21,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), OpenFragmen
     override fun openNewFragment(fragment: Fragment, toBackStack: Boolean) {
         val fragmentManager = supportFragmentManager.beginTransaction()
             .add(navHost, fragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
         if (toBackStack) {
             fragmentManager

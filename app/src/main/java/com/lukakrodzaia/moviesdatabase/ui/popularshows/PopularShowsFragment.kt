@@ -56,6 +56,7 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
 
         popularShowsViewModel.isLoading.observe(viewLifecycleOwner, {
             binding.loading.setVisibleOrGone(it)
+            binding.noInternet.setVisibleOrGone(!it)
             loading = it
         })
 
