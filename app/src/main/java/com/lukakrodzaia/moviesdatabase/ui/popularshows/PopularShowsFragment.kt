@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lukakrodzaia.moviesdatabase.databinding.FragmentPopularShowsBinding
 import com.lukakrodzaia.moviesdatabase.ui.baseclasses.BaseFragment
+import com.lukakrodzaia.moviesdatabase.ui.search.SearchFragment
 import com.lukakrodzaia.moviesdatabase.ui.singletitle.SingleTitleFragment
 import com.lukakrodzaia.moviesdatabase.utils.AppConstants
 import com.lukakrodzaia.moviesdatabase.utils.applyBundle
@@ -41,7 +42,7 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
 
     private fun clickListeners() {
         binding.searchButton.setOnClickListener {
-
+            openFragmentListener?.openNewFragment(SearchFragment())
         }
 
         binding.retryButton.setOnClickListener {

@@ -14,10 +14,11 @@ import com.lukakrodzaia.moviesdatabase.utils.AppConstants
 import com.lukakrodzaia.moviesdatabase.utils.setImage
 import com.lukakrodzaia.moviesdatabase.utils.setVisibleOrGone
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
 class SingleTitleFragment : BaseFragment<FragmentSingleTitleBinding>() {
-    private val singleTitleViewModel: SingleTitleViewModel by inject()
+    private val singleTitleViewModel: SingleTitleViewModel by viewModel()
     private lateinit var pagerAdapter: SingleTitleDetailsAdapter
 
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentSingleTitleBinding

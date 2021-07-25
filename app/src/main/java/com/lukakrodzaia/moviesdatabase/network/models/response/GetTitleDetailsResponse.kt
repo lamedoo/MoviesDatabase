@@ -14,7 +14,7 @@ data class GetTitleDetailsResponse(
     @SerializedName("episode_run_time")
     val episodeRunTime: List<Int>,
     @SerializedName("first_air_date")
-    val firstAirDate: String,
+    val firstAirDate: String?,
     @SerializedName("genres")
     val genres: List<Genre>,
     @SerializedName("homepage")

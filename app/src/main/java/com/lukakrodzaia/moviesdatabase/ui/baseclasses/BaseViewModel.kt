@@ -10,9 +10,6 @@ import org.koin.core.get
 import org.koin.core.inject
 
 open class BaseViewModel: ViewModel(), KoinComponent {
-    private val tvRepository: TvRepository = get()
-    protected val repository: DefaultTvRepository = tvRepository
-
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 

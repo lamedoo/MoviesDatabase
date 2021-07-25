@@ -11,4 +11,5 @@
     <string name="genres">ჟანრები</string>
     <string name="seasons">სეზონი</string>
     <string name="episodes">ეპიზოდი</string>
+    <string name="search_tv_shows">მოძებნმეთ სერიალები</string>
 </resources>

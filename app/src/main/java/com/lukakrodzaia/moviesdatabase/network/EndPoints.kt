@@ -9,6 +9,7 @@ object EndPoints {
     const val GET_POPULAR_TV_SHOWS = "tv/popular"
     const val GET_TITLE_DETAILS = "tv/{tv_id}"
     const val GET_SIMILAR_TV_SHOWS = "tv/{tv_id}/similar"
+    const val GET_TV_SHOW_SEARCH = "search/tv"
 
     const val ERROR_CODE_401 = "401"
     const val ERROR_CODE_404 = "404"

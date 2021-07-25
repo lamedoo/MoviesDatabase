@@ -8,12 +8,13 @@ import com.lukakrodzaia.moviesdatabase.datamodels.PopularListModel
 import com.lukakrodzaia.moviesdatabase.datamodels.SimilarListModel
 import com.lukakrodzaia.moviesdatabase.datamodels.SingleTitleModel
 import com.lukakrodzaia.moviesdatabase.network.Result
+import com.lukakrodzaia.moviesdatabase.repositories.tvrepository.DefaultTvRepository
 import com.lukakrodzaia.moviesdatabase.ui.baseclasses.BaseViewModel
 import com.lukakrodzaia.moviesdatabase.utils.toSimilarListModel
 import com.lukakrodzaia.moviesdatabase.utils.toSingleTitleModel
 import kotlinx.coroutines.launch
 
-class SingleTitleViewModel : BaseViewModel() {
+class SingleTitleViewModel(private val repository: DefaultTvRepository) : BaseViewModel() {
     private val _singleTitleData = MutableLiveData<SingleTitleModel>()
     val singleTitleData: LiveData<SingleTitleModel> = _singleTitleData
 

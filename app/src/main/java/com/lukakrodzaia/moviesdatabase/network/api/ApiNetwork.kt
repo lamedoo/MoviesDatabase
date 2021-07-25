@@ -4,6 +4,7 @@ import com.lukakrodzaia.moviesdatabase.network.EndPoints
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetPopularTvShowsResponse
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetSimilarTvShowsResponse
 import com.lukakrodzaia.moviesdatabase.network.models.response.GetTitleDetailsResponse
+import com.lukakrodzaia.moviesdatabase.network.models.response.GetTvShowSearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,4 +25,10 @@ interface ApiNetwork {
                                   @Query("page") page: Int,
                                   @Query("api_key") api_key: String = EndPoints.API_KEY
     ) : Response<GetSimilarTvShowsResponse>
+
+    @GET(EndPoints.GET_TV_SHOW_SEARCH)
+    suspend fun getTvShowSearch(@Query("query") query: String,
+                                @Query("page") page: Int,
+                                @Query("api_key") api_key: String = EndPoints.API_KEY
+    ) : Response<GetTvShowSearchResponse>
 }
