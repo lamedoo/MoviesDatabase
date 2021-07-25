@@ -1,6 +1,8 @@
 package com.lukakrodzaia.moviesdatabase.ui.singletitle.similartab
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +17,10 @@ import com.lukakrodzaia.moviesdatabase.utils.AppConstants
 import com.lukakrodzaia.moviesdatabase.utils.applyBundle
 import com.lukakrodzaia.moviesdatabase.utils.setVisibleOrGone
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SingleTitleSimilarTabFragment : BaseFragment<FragmentSingleTitleSimilarTabBinding>() {
-    private val singleTitleViewModel: SingleTitleViewModel by inject()
+    private val singleTitleViewModel: SingleTitleViewModel by viewModel()
     private lateinit var similarShowsAdapter: SimilarShowsAdapter
     private lateinit var layoutManager: GridLayoutManager
 
@@ -39,11 +42,20 @@ class SingleTitleSimilarTabFragment : BaseFragment<FragmentSingleTitleSimilarTab
         val id = args?.getInt(AppConstants.TITLE_ID)
 
         if (id != null) {
-            setSimilarTitles(id)
+            if (savedInstanceState == null) {
+                singleTitleViewModel.getSimilarTitles(id, page)
+            } else {
+                page = savedInstanceState.getInt(AppConstants.PAGE)
+            }
             infiniteScroll(id)
         }
-
+        setSimilarTitles()
         fragmentObservers()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(AppConstants.PAGE, page)
     }
 
     private fun fragmentObservers() {
@@ -62,10 +74,12 @@ class SingleTitleSimilarTabFragment : BaseFragment<FragmentSingleTitleSimilarTab
     }
 
 
-    private fun setSimilarTitles(id: Int) {
-        singleTitleViewModel.getSimilarTitles(id, page)
-
-        layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+    private fun setSimilarTitles() {
+        layoutManager = if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(requireActivity(), 3, GridLayoutManager.VERTICAL, false)
+        } else {
+            GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+        }
         similarShowsAdapter = SimilarShowsAdapter(requireContext()) {
             val singleTitleFragment = SingleTitleFragment().applyBundle {
                 putInt(AppConstants.TITLE_ID, it)

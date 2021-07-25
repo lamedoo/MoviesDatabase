@@ -7,6 +7,9 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lukakrodzaia.moviesdatabase.R
 import com.lukakrodzaia.moviesdatabase.datamodels.PopularListModel

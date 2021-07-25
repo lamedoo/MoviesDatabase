@@ -11,7 +11,7 @@ import com.lukakrodzaia.moviesdatabase.utils.applyBundle
 class SingleTitleDetailsAdapter(fa: FragmentManager, private val id: Int): FragmentStatePagerAdapter(fa) {
 
     override fun getCount(): Int {
-        return 3
+        return 2
     }
 
     override fun getItem(position: Int): Fragment {

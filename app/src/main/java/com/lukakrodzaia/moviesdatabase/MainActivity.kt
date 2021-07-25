@@ -15,6 +15,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        openNewFragment(PopularShowsFragment(), false)
+        if (savedInstanceState == null) {
+            openNewFragment(PopularShowsFragment(), false)
+        }
     }
 }

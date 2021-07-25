@@ -34,11 +34,20 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (savedInstanceState != null) {
+            page = savedInstanceState.getInt(AppConstants.PAGE)
+        }
+
+        setSearchListener(savedInstanceState != null)
         fragmentObservers()
         clickListeners()
-        setSearchListener()
         setSearchResults()
         infiniteScroll()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(AppConstants.PAGE, page)
     }
 
     private fun clickListeners() {
@@ -64,19 +73,26 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         })
     }
 
-    private fun setSearchListener() {
+    private fun setSearchListener(isRotated: Boolean) {
         binding.searchInput.showKeyboard()
+
+        var rotated: Boolean
+        rotated = isRotated
 
         binding.searchInput.setQueryTextChangeListener(object : CustomSearchInput.QueryTextListener {
             override fun onQueryTextSubmit(query: String?) {}
 
             override fun onQueryTextChange(newText: String?) {
-                if (newText != null) {
-                    searchViewModel.clearSearchList()
-                    searchViewModel.getTvShowSearch(newText, 1)
-                } else {
-                    searchViewModel.clearSearchList()
+                if (!rotated) {
+                    if (newText != null) {
+                        searchViewModel.clearSearchList()
+                        searchViewModel.getTvShowSearch(newText, 1)
+                    } else {
+                        page = 1
+                        searchViewModel.clearSearchList()
+                    }
                 }
+                rotated = false
             }
 
         })
@@ -98,6 +114,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             searchAdapter.setItems(it)
         })
     }
+
     private fun infiniteScroll() {
         binding.rvSearch.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

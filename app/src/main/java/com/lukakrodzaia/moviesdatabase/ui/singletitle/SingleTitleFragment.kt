@@ -30,12 +30,15 @@ class SingleTitleFragment : BaseFragment<FragmentSingleTitleBinding>() {
         val args = arguments
         val id = args?.getInt(AppConstants.TITLE_ID)
 
+        if (savedInstanceState == null) {
+            singleTitleViewModel.getSingleTitle(id!!)
+        }
+        getSingleTitleData()
+
         if (id != null) {
-            getSingleTitleData(id)
             setViewPager(id)
             fragmentListeners(id)
         }
-
         fragmentObservers()
     }
 
@@ -47,7 +50,7 @@ class SingleTitleFragment : BaseFragment<FragmentSingleTitleBinding>() {
         binding.shareButton.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, "This is my text to send.")
+                putExtra(Intent.EXTRA_TEXT, "${AppConstants.SHARE_TV_LINK}/$id")
                 type = "text/plain"
             }
 
@@ -111,16 +114,11 @@ class SingleTitleFragment : BaseFragment<FragmentSingleTitleBinding>() {
         binding.tabLayout.addOnTabSelectedListener(OnTabSelectedListener())
     }
 
-    private fun getSingleTitleData(id: Int) {
-        singleTitleViewModel.getSingleTitle(id)
-
+    private fun getSingleTitleData() {
         singleTitleViewModel.singleTitleData.observe(viewLifecycleOwner, {
             binding.titleCover.setImage(it.cover)
             binding.titleName.text = it.name
             binding.titleNameTop.text = it.name
-            binding.titleRating.setDetailInfo(it.rating)
-            binding.titleDate.setDetailInfo(it.date)
-            binding.titleLength.setDetailInfo(it.length)
         })
     }
 

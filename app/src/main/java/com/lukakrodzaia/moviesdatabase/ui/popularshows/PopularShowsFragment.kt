@@ -1,6 +1,8 @@
 package com.lukakrodzaia.moviesdatabase.ui.popularshows
 
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,10 +36,21 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setPopularShowsRecycler()
         fragmentObservers()
         infiniteScroll()
         clickListeners()
+
+        if (savedInstanceState == null) {
+            popularShowsViewModel.fetchPopularShows(page)
+        } else {
+            page = savedInstanceState.getInt(AppConstants.PAGE)
+        }
+        setPopularShowsRecycler()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(AppConstants.PAGE, page)
     }
 
     private fun clickListeners() {
@@ -67,9 +80,11 @@ class PopularShowsFragment: BaseFragment<FragmentPopularShowsBinding>() {
     }
 
     private fun setPopularShowsRecycler() {
-        popularShowsViewModel.fetchPopularShows(page)
-
-        layoutManager = GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+        layoutManager = if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            GridLayoutManager(requireActivity(), 3, GridLayoutManager.VERTICAL, false)
+        } else {
+            GridLayoutManager(requireActivity(), 2, GridLayoutManager.VERTICAL, false)
+        }
         popularShowsAdapter = PopularShowsAdapter(requireContext()) {
             val singleTitleFragment = SingleTitleFragment().applyBundle {
                 putInt(AppConstants.TITLE_ID, it)

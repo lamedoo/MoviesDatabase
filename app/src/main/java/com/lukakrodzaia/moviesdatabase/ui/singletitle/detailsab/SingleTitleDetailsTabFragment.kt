@@ -26,14 +26,18 @@ class SingleTitleDetailsTabFragment : BaseFragment<FragmentSingleTitleDetailsTab
         val id = args?.getInt(AppConstants.TITLE_ID)
 
         if (id != null) {
-            setTitleDetails(id)
+            if (savedInstanceState == null) {
+                singleTitleViewModel.getSingleTitle(id)
+            }
         }
+        setTitleDetails()
     }
 
-    private fun setTitleDetails(id: Int) {
-        singleTitleViewModel.getSingleTitle(id)
-
+    private fun setTitleDetails() {
         singleTitleViewModel.singleTitleData.observe(viewLifecycleOwner, {
+            binding.titleRating.setDetailInfo(it.rating)
+            binding.titleDate.setDetailInfo(it.date)
+            binding.titleLength.setDetailInfo(it.length)
             binding.titleOverview.text = it.overview
             binding.titleGenres.text = it.genres
             binding.titleDuration.text = "${resources.getString(R.string.seasons)} ${it.seasons}, ${resources.getString(R.string.episodes)} ${it.episodes}"

@@ -1,59 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="10dp"
-    android:paddingVertical="20dp"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:background="@color/_1d1d1d">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="@string/overview"
-        android:textColor="@color/_8b8b8b"/>
-
-    <TextView
-        android:id="@+id/title_overview"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        tools:text="აღწერა არ მოიძებნა"
-        android:textColor="@color/_e2e2e2"/>
-
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:text="@string/genres"
-        android:textColor="@color/_8b8b8b"/>
+        android:orientation="vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="20dp"
+        tools:background="@color/_1d1d1d">
 
-    <TextView
-        android:id="@+id/title_genres"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        tools:text="დარამა, კომედია"
-        android:textColor="@color/_e2e2e2"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:text="@string/length"
-        android:textColor="@color/_8b8b8b"/>
+            <com.lukakrodzaia.moviesdatabase.customviews.CTitleDetailView
+                android:id="@+id/title_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:detailName="@string/rating"
+                app:layout_constraintEnd_toStartOf="@+id/title_date"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:detailInfo="9.0" />
 
-    <TextView
-        android:id="@+id/title_duration"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dp"
-        tools:text="2 სეზონი, 20 ეპიზოდი"
-        android:textColor="@color/_e2e2e2"/>
+            <com.lukakrodzaia.moviesdatabase.customviews.CTitleDetailView
+                android:id="@+id/title_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:detailName="@string/date"
+                app:layout_constraintEnd_toStartOf="@+id/title_length"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/title_rating"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:detailInfo="1970-02-07" />
 
-</LinearLayout>
+            <com.lukakrodzaia.moviesdatabase.customviews.CTitleDetailView
+                android:id="@+id/title_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:detailName="@string/length"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/title_date"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:detailInfo="52 წთ." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/overview"
+            android:textColor="@color/_8b8b8b"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/title_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/_e2e2e2"
+            tools:text="აღწერა არ მოიძებნა" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/genres"
+            android:textColor="@color/_8b8b8b"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/title_genres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/_e2e2e2"
+            tools:text="დარამა, კომედია" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/length"
+            android:textColor="@color/_8b8b8b"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/title_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/_e2e2e2"
+            tools:text="2 სეზონი, 20 ეპიზოდი" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
