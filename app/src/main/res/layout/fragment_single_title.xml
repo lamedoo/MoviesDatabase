@@ -33,6 +33,7 @@
             android:id="@+id/retry_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/_00A661"
             android:layout_marginTop="5dp"
             android:text="@string/try_again"
             android:letterSpacing="0"
@@ -185,43 +186,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
-
-<!--                <com.lukakrodzaia.moviesdatabase.customviews.CTitleDetailView-->
-<!--                    android:id="@+id/title_rating"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    app:detailName="@string/rating"-->
-<!--                    app:layout_constraintEnd_toStartOf="@+id/title_date"-->
-<!--                    app:layout_constraintHorizontal_bias="0.5"-->
-<!--                    app:layout_constraintHorizontal_chainStyle="spread"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/hr_line"-->
-<!--                    tools:detailInfo="9.0" />-->
-
-<!--                <com.lukakrodzaia.moviesdatabase.customviews.CTitleDetailView-->
-<!--                    android:id="@+id/title_date"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    app:detailName="@string/date"-->
-<!--                    app:layout_constraintEnd_toStartOf="@+id/title_length"-->
-<!--                    app:layout_constraintHorizontal_bias="0.5"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/title_rating"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/hr_line"-->
-<!--                    tools:detailInfo="1970-02-07" />-->
-
-<!--                <com.lukakrodzaia.moviesdatabase.customviews.CTitleDetailView-->
-<!--                    android:id="@+id/title_length"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    app:detailName="@string/length"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintHorizontal_bias="0.5"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/title_date"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/hr_line"-->
-<!--                    tools:detailInfo="52 წთ." />-->
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"

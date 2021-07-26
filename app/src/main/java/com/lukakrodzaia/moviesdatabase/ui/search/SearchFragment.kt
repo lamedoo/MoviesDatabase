@@ -17,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>() {
     private val searchViewModel: SearchViewModel by viewModel()
+    private var searchQuery = ""
 
     private lateinit var searchAdapter: SearchAdapter
     private lateinit var layoutManager: LinearLayoutManager
@@ -55,6 +56,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             binding.searchInput.hideKeyboard()
             requireActivity().onBackPressed()
         }
+
+        binding.retryButton.setOnClickListener {
+            searchViewModel.getTvShowSearch(searchQuery, page)
+        }
     }
 
     private fun fragmentObservers() {
@@ -87,6 +92,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                     if (newText != null) {
                         searchViewModel.clearSearchList()
                         searchViewModel.getTvShowSearch(newText, 1)
+                        searchQuery = newText
                     } else {
                         page = 1
                         searchViewModel.clearSearchList()
