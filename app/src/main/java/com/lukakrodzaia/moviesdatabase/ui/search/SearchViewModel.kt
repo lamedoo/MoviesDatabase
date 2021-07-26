@@ -21,7 +21,7 @@ class SearchViewModel(private val repository: DefaultTvRepository) : BaseViewMod
 
     fun getTvShowSearch(query: String, page: Int) {
         viewModelScope.launch {
-            loading()
+            isLoading(true)
             when (val search = repository.getTvShowSearch(query, page)) {
                 is Result.Success -> {
                     val data = search.data
@@ -31,16 +31,16 @@ class SearchViewModel(private val repository: DefaultTvRepository) : BaseViewMod
 
                     _hasMore.value = data.page < data.totalPages
 
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Error -> {
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Internet -> {
-                    loaded()
-                    noInternet()
+                    isLoading(false)
+                    isInternet(false)
                 }
             }
         }

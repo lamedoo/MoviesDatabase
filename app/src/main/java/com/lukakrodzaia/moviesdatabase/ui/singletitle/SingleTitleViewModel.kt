@@ -27,23 +27,23 @@ class SingleTitleViewModel(private val repository: DefaultTvRepository) : BaseVi
 
     fun getSingleTitle(id: Int) {
         viewModelScope.launch {
-            loading()
+            isLoading(true)
             when (val title = repository.getTitleDetails(id)) {
                 is Result.Success -> {
                     val data = title.data
 
                     _singleTitleData.value = data.toSingleTitleModel()
 
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Error -> {
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Internet -> {
-                    loaded()
-                    noInternet()
+                    isLoading(false)
+                    isInternet(false)
                 }
             }
         }
@@ -51,7 +51,7 @@ class SingleTitleViewModel(private val repository: DefaultTvRepository) : BaseVi
 
     fun getSimilarTitles(id: Int, page: Int) {
         viewModelScope.launch {
-            loading()
+            isLoading(true)
             when (val similar = repository.getSimilarTvShows(id, page)) {
                 is Result.Success -> {
                     val data = similar.data
@@ -60,16 +60,16 @@ class SingleTitleViewModel(private val repository: DefaultTvRepository) : BaseVi
                     _similarTitlesList.value = fetchSimilarShows
                     _hasMore.value = data.page < data.totalPages
 
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Error -> {
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Internet -> {
-                    loaded()
-                    noInternet()
+                    isLoading(false)
+                    isInternet(false)
                 }
             }
         }

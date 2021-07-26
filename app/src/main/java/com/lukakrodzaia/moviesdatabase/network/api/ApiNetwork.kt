@@ -12,23 +12,16 @@ import retrofit2.http.Query
 
 interface ApiNetwork {
     @GET(EndPoints.GET_POPULAR_TV_SHOWS)
-    suspend fun getPopularTvShows(@Query("page") page: Int,
-                                  @Query("api_key") api_key: String = EndPoints.API_KEY) : Response<GetPopularTvShowsResponse>
+    suspend fun getPopularTvShows(@Query("page") page: Int) : Response<GetPopularTvShowsResponse>
 
     @GET(EndPoints.GET_TITLE_DETAILS)
-    suspend fun getTitleDetails(@Path("tv_id") tv_id: Int,
-                                @Query("api_key") api_key: String = EndPoints.API_KEY
-    ) : Response<GetTitleDetailsResponse>
+    suspend fun getTitleDetails(@Path("tv_id") tv_id: Int) : Response<GetTitleDetailsResponse>
 
     @GET(EndPoints.GET_SIMILAR_TV_SHOWS)
     suspend fun getSimilarTvShows(@Path("tv_id") tv_id: Int,
-                                  @Query("page") page: Int,
-                                  @Query("api_key") api_key: String = EndPoints.API_KEY
-    ) : Response<GetSimilarTvShowsResponse>
+                                  @Query("page") page: Int) : Response<GetSimilarTvShowsResponse>
 
     @GET(EndPoints.GET_TV_SHOW_SEARCH)
     suspend fun getTvShowSearch(@Query("query") query: String,
-                                @Query("page") page: Int,
-                                @Query("api_key") api_key: String = EndPoints.API_KEY
-    ) : Response<GetTvShowSearchResponse>
+                                @Query("page") page: Int) : Response<GetTvShowSearchResponse>
 }

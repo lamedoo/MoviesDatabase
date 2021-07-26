@@ -3,6 +3,7 @@ package com.lukakrodzaia.moviesdatabase.di
 import com.lukakrodzaia.moviesdatabase.network.api.ApiNetwork
 import com.lukakrodzaia.moviesdatabase.network.RetrofitBuilder
 import com.lukakrodzaia.moviesdatabase.network.interceptors.NetworkConnectionInterceptor
+import com.lukakrodzaia.moviesdatabase.network.interceptors.QueryInterceptor
 import com.lukakrodzaia.moviesdatabase.repositories.tvrepository.DefaultTvRepository
 import com.lukakrodzaia.moviesdatabase.repositories.tvrepository.TvRepository
 import com.lukakrodzaia.moviesdatabase.ui.baseclasses.BaseViewModel
@@ -25,6 +26,7 @@ val repositoryModule = module {
 
 val generalModule = module {
     single { NetworkConnectionInterceptor(get()) }
-    single { RetrofitBuilder(get()) }
+    single { QueryInterceptor() }
+    single { RetrofitBuilder(get(), get()) }
     single { get<RetrofitBuilder>().getRetrofitInstance().create(ApiNetwork::class.java) }
 }

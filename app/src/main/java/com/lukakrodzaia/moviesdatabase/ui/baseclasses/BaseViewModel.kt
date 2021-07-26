@@ -16,19 +16,11 @@ open class BaseViewModel: ViewModel(), KoinComponent {
     private val _isInternet = MutableLiveData<Boolean>()
     val isInternet: LiveData<Boolean> = _isInternet
 
-    fun loading() {
-        _isLoading.value = true
+    fun isLoading(loading: Boolean) {
+        _isLoading.value = loading
     }
 
-    fun loaded() {
-        _isLoading.value = false
-    }
-
-    fun hasInternet() {
-        _isInternet.value = true
-    }
-
-    fun noInternet() {
-        _isInternet.value = false
+    fun isInternet(internet: Boolean) {
+        _isInternet.value = internet
     }
 }

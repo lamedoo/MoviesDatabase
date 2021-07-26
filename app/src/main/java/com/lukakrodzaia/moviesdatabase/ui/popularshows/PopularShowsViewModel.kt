@@ -20,7 +20,7 @@ class PopularShowsViewModel(private val repository: DefaultTvRepository): BaseVi
 
     fun fetchPopularShows(page: Int) {
         viewModelScope.launch {
-            loading()
+            isLoading(true)
             when (val shows = repository.getPopularTvShows(page)) {
                 is Result.Success -> {
                     val data = shows.data
@@ -30,16 +30,16 @@ class PopularShowsViewModel(private val repository: DefaultTvRepository): BaseVi
 
                     _hasMore.value = data.page < data.totalPages
 
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Error -> {
-                    loaded()
-                    hasInternet()
+                    isLoading(false)
+                    isInternet(true)
                 }
                 is Result.Internet -> {
-                    loaded()
-                    noInternet()
+                    isLoading(false)
+                    isInternet(false)
                 }
             }
         }
